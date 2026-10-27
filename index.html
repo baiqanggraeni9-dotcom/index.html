@@ -3,246 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perkenalan Diri - Wina</title>
+    <title>Spesial Untukmu ❤️</title>
     <style>
-        /* RESET & BASE STYLES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: #0b0c10;
-            color: #e0e0e0;
+            background-color: #0d0914;
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
-        /* BACKGROUND GLOW EFFECT */
-        body::before {
-            content: '';
+        /* EFEK CAHAYA BACKGROUND */
+        .glow-bg {
             position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(77, 166, 255, 0.25) 0%, rgba(0,0,0,0) 70%);
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 75, 145, 0.3) 0%, rgba(0,0,0,0) 70%);
             border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 0;
             pointer-events: none;
         }
 
-        body::after {
-            content: '';
-            position: absolute;
-            bottom: -10%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(182, 109, 255, 0.25) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* MAIN CARD (GLASSMORPHISM & GLOW) */
+        /* KARTU UTAMA */
         .card {
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 600px;
-            background: rgba(22, 24, 34, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 35px 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
-                        0 0 20px rgba(77, 166, 255, 0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 182, 193, 0.25);
+            border-radius: 30px;
+            padding: 45px 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                        0 0 30px rgba(255, 75, 145, 0.25);
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.8),
-                        0 0 30px rgba(182, 109, 255, 0.25);
-            border-color: rgba(182, 109, 255, 0.3);
-        }
-
-        /* PROFILE HEADER */
-        .header {
-            text-align: left;
-            margin-bottom: 25px;
-        }
-
-        .header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #4da6ff 0%, #b66dff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-
-        .header .status {
-            color: #94a3b8;
-            font-size: 1rem;
-            font-style: italic;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header .status::before {
-            content: '';
+        .icon-heart {
+            font-size: 4rem;
+            animation: pulse 1.3s infinite;
+            margin-bottom: 20px;
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #00ff88;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #00ff88;
         }
 
-        /* SECTION TITLES */
-        h2 {
-            color: #f1f5f9;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 8px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.18); }
+            100% { transform: scale(1); }
         }
 
-        /* KEAHLIAN / SKILL BADGES */
-        .skill-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .skill-list li {
-            background: rgba(77, 166, 255, 0.1);
-            border: 1px solid rgba(77, 166, 255, 0.25);
-            color: #7dd3fc;
-            padding: 10px 18px;
-            border-radius: 50px;
-            font-size: 0.92rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .skill-list li:hover {
-            background: rgba(182, 109, 255, 0.2);
-            border-color: rgba(182, 109, 255, 0.5);
+        /* TOMBOL UNTUK DIKLIK */
+        .btn-love {
+            background: linear-gradient(135deg, #ff4b91, #ff758c);
             color: #ffffff;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(182, 109, 255, 0.3);
-        }
-
-        /* PESAN BOX */
-        .pesan-container {
-            position: relative;
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 4px solid #b66dff;
-            border-radius: 0 16px 16px 0;
-            padding: 18px 22px;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 75, 145, 0.5);
+            transition: all 0.3s ease;
             margin-top: 10px;
         }
 
-        .pesan-container p {
-            color: #cbd5e1;
-            font-size: 0.98rem;
-            line-height: 1.7;
-            font-style: italic;
+        .btn-love:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(255, 75, 145, 0.8);
         }
 
-        /* FOOTER / ACTION BUTTON */
-        .card-footer {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .btn-love:active {
+            transform: scale(0.95);
         }
 
-        .btn-sapa {
-            background: linear-gradient(135deg, #4da6ff, #b66dff);
-            color: #ffffff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(182, 109, 255, 0.4);
-            transition: all 0.3s ease;
+        /* PESAN YANG MUNCUL SETELAH DIKLIK */
+        .pesan-rahasia {
+            display: none;
+            margin-top: 25px;
+            animation: fadeIn 1s ease-in-out forwards;
         }
 
-        .btn-sapa:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(77, 166, 255, 0.6);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .btn-sapa:active {
-            transform: scale(0.98);
+        .highlight-wina {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 117, 140, 0.7);
+            line-height: 1.4;
         }
 
-        .watermark {
-            font-size: 0.8rem;
-            color: #64748b;
+        /* ANIMASI BUNGA DAN LOVE MELAYANG */
+        .floating-item {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 4s linear forwards;
+            z-index: 99;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.6);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 
+    <div class="glow-bg"></div>
+
     <div class="card">
-        <!-- HEADER -->
-        <div class="header">
-            <h1>Perkenalan Diri - Wina</h1>
-            <div class="status">Belajar codingan agar pinter ✨</div>
-        </div>
+        <div class="icon-heart">💖</div>
 
-        <!-- KEAHLIAN & MINAT -->
-        <h2>⚡ Keahlian & Minat Wina</h2>
-        <ul class="skill-list">
-            <li>💻 Pemrograman Web (HTML, CSS, PHP, Laravel)</li>
-            <li>🗺️ Pengolahan Data & Pemetaan Spatial (QGIS)</li>
-            <li>🎨 Pengembangan Proyek Kreatif & Animasi Web</li>
-        </ul>
+        <button class="btn-love" id="loveBtn" onclick="tampilkanPesan()">Klik kalau sayang Wina ✨</button>
 
-        <!-- PESAN SANTAI -->
-        <h2>💬 Pesan</h2>
-        <div class="pesan-container">
-            <p>"kalok nanti ada yg carik sy buat bantuin ngoding mohon maaf karana sy juga lagi belajar hehehehehehehe"</p>
-        </div>
-
-        <!-- FOOTER & BUTTON -->
-        <div class="card-footer">
-            <span class="watermark">Made with ❤️ by Wina</span>
-            <button class="btn-sapa" onclick="sapaWina()">Sapa Wina 👋</button>
+        <div class="pesan-rahasia" id="pesanBox">
+            <div class="highlight-wina">Wina sayang kamuuu! 🤍🌸</div>
         </div>
     </div>
 
     <script>
-        function sapaWina() {
-            alert("Halo! Terima kasih sudah mampir ke profil Wina 😄✨\nSemangat belajar coding-nya juga ya!");
+        function tampilkanPesan() {
+            document.getElementById('loveBtn').style.display = 'none';
+            document.getElementById('pesanBox').style.display = 'block';
+
+            const simbol = ['💖', '💕', '❤️', '🌸', '🌹', '🌺', '🌷', '✨', '🥰', '💗', '🤍'];
+            
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    buatBungaLove(simbol);
+                }, i * 60);
+            }
+
+            setInterval(() => {
+                buatBungaLove(simbol);
+            }, 300);
+        }
+
+        function buatBungaLove(simbol) {
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+            item.innerHTML = simbol[Math.floor(Math.random() * simbol.length)];
+            
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.top = '100vh';
+            item.style.fontSize = (Math.random() * 25 + 20) + 'px';
+            
+            document.body.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, 4000);
         }
     </script>
 </body>
